@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,68 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Turn_by_Turn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwJ-eK-VMc">
+                                <rect key="frame" x="0.0" y="20" width="414" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction Navigation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="D1w-1W-kD4">
+                                        <rect key="frame" x="8" y="32" width="398" height="88"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="D1w-1W-kD4" firstAttribute="leading" secondItem="zwJ-eK-VMc" secondAttribute="leading" constant="8" id="1Rf-RM-cJ3"/>
+                                    <constraint firstItem="D1w-1W-kD4" firstAttribute="top" secondItem="zwJ-eK-VMc" secondAttribute="top" constant="32" id="7M6-6B-aZj"/>
+                                    <constraint firstAttribute="height" constant="128" id="JPW-in-44v"/>
+                                    <constraint firstAttribute="trailing" secondItem="D1w-1W-kD4" secondAttribute="trailing" constant="8" id="UUI-vm-YKZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="D1w-1W-kD4" secondAttribute="bottom" constant="8" id="wA4-zK-qJL"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WRi-Ph-NcL">
+                                <rect key="frame" x="0.0" y="148" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eug-jV-UAD"/>
+                                </connections>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMB-hP-VNa">
+                                <rect key="frame" x="0.0" y="204" width="414" height="692"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7IP-Va-qRA"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZMB-hP-VNa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="441-ro-M0j"/>
+                            <constraint firstItem="zwJ-eK-VMc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BJc-UF-mq5"/>
+                            <constraint firstItem="ZMB-hP-VNa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GqO-Hc-jez"/>
+                            <constraint firstItem="WRi-Ph-NcL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hsq-M8-oQp"/>
+                            <constraint firstItem="WRi-Ph-NcL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ifj-nG-kPv"/>
+                            <constraint firstItem="WRi-Ph-NcL" firstAttribute="top" secondItem="zwJ-eK-VMc" secondAttribute="bottom" symbolic="YES" id="LK2-5C-loh"/>
+                            <constraint firstItem="zwJ-eK-VMc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="PNR-Mk-9J5"/>
+                            <constraint firstItem="ZMB-hP-VNa" firstAttribute="top" secondItem="WRi-Ph-NcL" secondAttribute="bottom" symbolic="YES" id="QYG-8J-8A4"/>
+                            <constraint firstAttribute="bottom" secondItem="ZMB-hP-VNa" secondAttribute="bottom" id="bqb-Xb-05r"/>
+                            <constraint firstItem="zwJ-eK-VMc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iul-Pd-Y6Q"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="directionsLbl" destination="D1w-1W-kD4" id="mkM-vG-6Yk"/>
+                        <outlet property="mapView" destination="ZMB-hP-VNa" id="46Z-QG-KiF"/>
+                        <outlet property="searchBar" destination="WRi-Ph-NcL" id="fnt-0Q-mHE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
     </scenes>
 </document>
