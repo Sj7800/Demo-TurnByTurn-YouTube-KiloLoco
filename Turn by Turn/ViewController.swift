@@ -29,7 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupLocationManager()
-        
+        setupMapView()
+
     }
     
     func setupLocationManager() {
@@ -41,7 +42,16 @@ class ViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.activityType = .fitness
         locationManager.startUpdatingLocation()
-
+        
+    }
+    
+    func setupMapView() {
+        
+        // Map View delegate
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        
     }
 
     func getDirrections(to destination: MKMapItem) {
@@ -89,8 +99,17 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
         
-        guard let currentLocation = locations.first else { return }
+        // 'locations.first' is not correct for My_Current_Location
+        guard let location = locations.first else { return }
+        let currentLocation = CLLocation(latitude: (location.coordinate.latitude) - 0.00189429, longitude: (location.coordinate.longitude) + 0.00463669)
         self.currentCoordinate = currentLocation.coordinate
+        print(currentLocation)
+        
+        // This data is correct for My_Current_Location as CLLocation type from mapView.userlocation
+        let mapViewCoordinate = mapView.userLocation.coordinate
+        //        self.currentCoordinate = mapViewCoordinate
+        print(mapViewCoordinate)
+
 //        guard let currentLocation = locationManager.location?.coordinate else { return }
 //        self.currentCoordinate = currentLocation
         
